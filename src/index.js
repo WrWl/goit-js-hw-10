@@ -1,5 +1,5 @@
 import './css/styles.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import Notiflix from 'notiflix';
 import { fetchCountries } from './fetchCountries';
 const input = document.querySelector("#search-box");
 const countryList = document.querySelector(".country-list");

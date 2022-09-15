@@ -16,7 +16,7 @@ function outputCountry(countries) {
         <p><b>Name</b>:${country.name.official}</p>
         <p><b>Capital</b>:${country.capital}</p>
         <p><b>Population</b>:${country.population}</p>
-        <p><b>Languages</b>:${country.languages}</p>
+        <p><b>Languages</b>:${Object.values(country.languages)}</p>
         
         </div>
         `
@@ -48,16 +48,13 @@ input.addEventListener("input", _.debounce((country) => {
     }
     else if (fetchCountries(country).length <= 10 && fetchCountries(country).length >= 2) {
         fetchCountries(country)
-            .then(outputCountries
-            );
+            .then(outputCountries);
         
     }
         
     else if (fetchCountries == 1) {
          fetchCountries(country)
-            .then(
-            outputCountry
-            )
+            .then(outputCountry)
         
     }
     

@@ -60,8 +60,6 @@ input.addEventListener("input", _.debounce((country) => {
             )
         
     }
-    else {
-        alert("eror")
-    }
+    
     
 }, DEBOUNCE_DELAY))

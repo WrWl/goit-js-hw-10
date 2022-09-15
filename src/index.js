@@ -41,12 +41,12 @@ function outputCountries(countries) {
 
 
 input.addEventListener("input",
-    _.debounce((country) => {
+    _.debounce(country => {
     country = input.value.trim();
         fetchCountries(country)
             .then(data => {
                 if (data.length > 10) {
-                    Notifi.info(
+                    Notify.info(
                 'Too many matches found. Please enter a more specific name.'
             );
             countryList.innerHTML = '';
@@ -61,7 +61,7 @@ input.addEventListener("input",
                 }
             })
             .catch(() => {
-                Notifi.failure("Oops, there is no country with that name");
+                Notify.failure("Oops, there is no country with that name");
                 countryList.innerHTML = '';
                 countryInfo.innerHTML = '';
    })

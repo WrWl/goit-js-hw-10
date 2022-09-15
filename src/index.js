@@ -46,9 +46,7 @@ input.addEventListener("input",
         fetchCountries(country)
             .then(data => {
                 if (data.length > 10) {
-                    Notify.info(
-                'Too many matches found. Please enter a more specific name.'
-            );
+                    Notify.info('Too many matches found. Please enter a more specific name.');
             countryList.innerHTML = '';
             countryInfo.innerHTML = '';
             return

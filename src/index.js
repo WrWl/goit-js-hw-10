@@ -61,7 +61,7 @@ input.addEventListener("input",
                 }
             })
             .catch(() => {
-                Notify.failure("Oops, there is no country with that name");
+                Notify.failure('Oops, there is no country with that name');
                 countryList.innerHTML = '';
                 countryInfo.innerHTML = '';
    })

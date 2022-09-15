@@ -40,10 +40,22 @@ function outputCountries(countries) {
 
 
 input.addEventListener("input", _.debounce((country) => {
-    country = input.value
-/*    fetchCountries(country).then() */
-    fetchCountries(country)
-    .then(outputCountries)
+    country = input.value;
+    if (fetchCountries(country).length > 10) {
+     alert("too much")
+    }
+    else if (fetchCountries(country).length <= 10 && fetchCountries(country).length >= 2) {
+        fetchCountries(country)
+        .then(outputCountries)
+    }
+    else if (fetchCountries == 1) {
+        fetchCountries(country)
+        .then(outputCountry)
+    }
+    else {
+        alert("eror")
+    }
+    
     
     
         

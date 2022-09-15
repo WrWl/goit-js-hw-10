@@ -40,23 +40,31 @@ function outputCountries(countries) {
 } 
 
 
-input.addEventListener("input", _.debounce((country) => {
+input.addEventListener("input",
+    _.debounce((country) => {
     country = input.value.trim();
-    
-    if (fetchCountries(country).length > 10) {
-        Notify.info("Too many matches found. Please enter a more specific name.");
-    }
-    else if (fetchCountries(country).length <= 10 && fetchCountries(country).length >= 2) {
         fetchCountries(country)
-            .then(outputCountries);
-        
-    }
-        
-    else if (fetchCountries == 1) {
-         fetchCountries(country)
-            .then(outputCountry)
-        
-    }
+            .then(data => {
+                if (data.length > 10) {
+                    Notifi.info(
+                'Too many matches found. Please enter a more specific name.'
+            );
+            countryList.innerHTML = '';
+            countryInfo.innerHTML = '';
+            return
+                } else if (data.length <= 10 && data.length >= 2) {
+                    outputCountries(data);
+                    countryInfo.innerHTML = '';
+                } else if (data.length === 1) {
+                    outputCountry(data);
+                    countryList.innerHTML = '';
+                }
+            })
+            .catch(() => {
+                Notifi.failure("Oops, there is no country with that name");
+                countryList.innerHTML = '';
+                countryInfo.innerHTML = '';
+   })
     
     
 }, DEBOUNCE_DELAY))

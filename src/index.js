@@ -1,8 +1,9 @@
 import './css/styles.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries';
-const input = document.querySelector("#search-box")
-const countryList = document.querySelector(".country-list")
-const countryInfo = document.querySelector(".country-info")
+const input = document.querySelector("#search-box");
+const countryList = document.querySelector(".country-list");
+const countryInfo = document.querySelector(".country-info");
 const DEBOUNCE_DELAY = 300;
 
 
@@ -40,25 +41,27 @@ function outputCountries(countries) {
 
 
 input.addEventListener("input", _.debounce((country) => {
-    country = input.value;
+    country = input.value.trim();
+    
     if (fetchCountries(country).length > 10) {
-     alert("too much")
+        Notify.info("Too many matches found. Please enter a more specific name.");
     }
     else if (fetchCountries(country).length <= 10 && fetchCountries(country).length >= 2) {
         fetchCountries(country)
-        .then(outputCountries)
+            .then(outputCountries
+            );
+        
     }
+        
     else if (fetchCountries == 1) {
-        fetchCountries(country)
-        .then(outputCountry)
+         fetchCountries(country)
+            .then(
+            outputCountry
+            )
+        
     }
     else {
         alert("eror")
     }
-    
-    
-    
-        
-        
     
 }, DEBOUNCE_DELAY))
